@@ -4,7 +4,7 @@ import time
 import mne
 
 # Initialize the EEG device
-mne.setup_self_contained_bids_environment(data_path='./data')
+# mne.setup_self_contained_bids_environment(data_path='./data')
 # raw = mne.io.read_raw_fif('my_eeg_device.fif', preload=True)
 
 # Set up the stimuli
@@ -17,16 +17,19 @@ n_targets = 8
 # Prepare EEG recording
 eeg_data = []
 
+
 # Function to generate a tone
 def generate_tone(frequency, duration, sampling_rate=44100):
     t = np.linspace(0, duration, int(sampling_rate * duration), endpoint=False)
     waveform = np.sin(2 * np.pi * frequency * t)
     return waveform
 
+
 # Function to record EEG data
 def record_eeg_data():
     # Record EEG data here and append it to eeg_data list
     pass  # Replace this with your EEG recording code
+
 
 # Function to play audio
 def play_audio(data, sampling_rate=44100):
@@ -38,6 +41,7 @@ def play_audio(data, sampling_rate=44100):
     stream.write(data.astype(np.float32).tostring())
     stream.close()
     p.terminate()
+
 
 # Present the stimuli
 for trial in range(n_trials):
