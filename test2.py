@@ -1,5 +1,5 @@
 import numpy as np
-import pyaudio
+import sounddevice as sd
 import time
 import mne
 
@@ -33,14 +33,8 @@ def record_eeg_data():
 
 # Function to play audio
 def play_audio(data, sampling_rate=44100):
-    p = pyaudio.PyAudio()
-    stream = p.open(format=pyaudio.paFloat32,
-                    channels=1,
-                    rate=sampling_rate,
-                    output=True)
-    stream.write(data.astype(np.float32).tostring())
-    stream.close()
-    p.terminate()
+    sd.play(data, samplerate=sampling_rate)
+    sd.wait()
 
 
 # Present the stimuli
