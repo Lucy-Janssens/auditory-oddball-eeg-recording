@@ -34,11 +34,11 @@ def main():
 
     if st.button("Start Experiment"):
         # Create an EEG stream outlet
-        eeg_info = StreamInfo('EEGStream', 'EEG', 8, 100, 'float32', 'my_eeg_stream')
+        eeg_info = StreamInfo('EEGStream', 'EEG', 8, 100, 'float32', 'eeg_stream')
         eeg_outlet = StreamOutlet(eeg_info)
 
         # Create a time code stream outlet
-        time_code_info = StreamInfo('TimeCodeStream', 'TimeCode', 1, 0, 'int32', 'my_time_code_stream')
+        time_code_info = StreamInfo('TimeCodeStream', 'TimeCode', 1, 0, 'int32', 'time_code_stream')
         time_code_outlet = StreamOutlet(time_code_info)
 
         tone_frequencies = [200, 400, 600, 800, 1000]  # Frequencies for the tones in Hz
